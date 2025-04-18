@@ -35,3 +35,16 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+.custom-button {
+    --background: #fff; /* Background color */
+    --color: #896AF9;        /* Text color */
+    --border-radius: 24px; /* Rounded corners */
+    --padding: 15.5px 27.09px 15.9px 26px;  /* Adjust padding */
+    font-weight: 900;
+    width: 220px;
+    height: 70px;
+  }
+  .m-auto {
+    margin: auto;
+  }

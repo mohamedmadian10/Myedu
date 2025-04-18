@@ -1,20 +1,19 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar class="custom-bg">
+    <ion-title>Logo</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content class=" center custom-bg custom-content">
+  <div class="hero-section ">
+    <h1>Discover the magic of our surprise box</h1>
+    <p>Unleash your child’s curiosity with our educational subscription box filled with fun and learning.</p>
+    <ion-button shape="round" class="custom-button">Subscribe Now</ion-button>
+    <div class="images">
+      <img src="assets/Placeholder.png" alt="Toys">
+      <!-- <img src="assets/images/toys2.png" alt="Toys"> -->
+    </div>
   </div>
+  <app-how-it-works></app-how-it-works>
 </ion-content>
+<app-footer></app-footer>
