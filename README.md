@@ -20,7 +20,7 @@ This project is an implementation of the MyEdu Figma design using Ionic, Angular
    ```bash
    git clone <repository-url>
    cd myedu
-   nom install
+   npm install
 ## Running
 ng serve
 ng test
