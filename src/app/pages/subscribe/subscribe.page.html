@@ -1,0 +1,142 @@
+<ion-header>
+  <ion-toolbar class="custom-bg">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+      <ion-title>Subscribe</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="subscribe-page">
+    <div class="form-container">
+      <h2>Subscribe</h2>
+      <p>to our Monthly Surprise Box</p>
+      <form [formGroup]="subscribeForm" (ngSubmit)="onSubmit()">
+         <!-- Contact Information -->
+        <h3>Contact Information</h3>
+        <!-- Name Field -->
+        <ion-item>
+          <ion-label position="stacked">Your Name</ion-label>
+          <ion-input type="text" formControlName="name"></ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="subscribeForm.controls['name'].touched && subscribeForm.controls['name'].invalid">
+          <span color="danger" *ngIf="subscribeForm.controls['name'].errors?.['required']">Name is required.</span>
+          <span *ngIf="subscribeForm.controls['name'].errors?.['minlength']">Name must be at least 2 characters.</span>
+        </div>
+
+        <!-- Email Field -->
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="subscribeForm.controls['email'].touched && subscribeForm.controls['email'].invalid">
+          <span *ngIf="subscribeForm.controls['email'].errors?.['required']">Email is required.</span>
+          <span *ngIf="subscribeForm.controls['email'].errors?.['email']">Enter a valid email address.</span>
+        </div>
+
+        <!-- Child's Information -->
+        <h3>Child's Information</h3>
+        <ion-item>
+          <ion-label position="stacked">Child's Full Name</ion-label>
+          <ion-input type="text" formControlName="childName"></ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="subscribeForm.controls['childName'].touched && subscribeForm.controls['childName'].invalid">
+          <span>Child's name is required.</span>
+        </div>
+
+        <ion-item>
+          <ion-label position="stacked">Child's Date of Birth</ion-label>
+          <div class="dob-select">
+            <ion-select placeholder="Day" formControlName="dobDay">
+              <ion-select-option *ngFor="let day of days" [value]="day">{{ day }}</ion-select-option>
+            </ion-select>
+            <ion-select placeholder="Month" formControlName="dobMonth">
+              <ion-select-option *ngFor="let month of months" [value]="month.value">
+                {{ month.name }}
+              </ion-select-option>
+            </ion-select>
+            <ion-select placeholder="Year" formControlName="dobYear">
+              <ion-select-option *ngFor="let year of years" [value]="year">{{ year }}</ion-select-option>
+            </ion-select>
+          </div>
+        </ion-item>
+        <div class="error-message" *ngIf="subscribeForm.controls['dobDay'].invalid && subscribeForm.controls['dobDay'].touched">
+          <span>Date of Birth is required.</span>
+        </div>
+
+        <!-- Grade -->
+        <ion-item>
+          <ion-label position="stacked">Grade</ion-label>
+          <ion-select formControlName="grade">
+            <ion-select-option *ngFor="let grade of grades" [value]="grade">{{ grade }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div class="error-message" *ngIf="subscribeForm.controls['grade'].touched && subscribeForm.controls['grade'].invalid">
+          <span>Grade is required.</span>
+        </div>
+
+        <!-- Gender -->
+        <ion-item>
+          <ion-label position="stacked">Gender</ion-label>
+          <ion-select formControlName="gender">
+            <ion-select-option value="boy">Boy</ion-select-option>
+            <ion-select-option value="girl">Girl</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div class="error-message" *ngIf="subscribeForm.controls['gender'].touched && subscribeForm.controls['gender'].invalid">
+          <span>Gender is required.</span>
+        </div>
+
+        <!-- Topics -->
+        <h3>As a parent, select any 3 topics</h3>
+        <div class="topics">
+          <ion-chip
+            *ngFor="let topic of topics; let i = index"
+            [outline]="!topicsControl.value.includes(topic.name)"
+            [color]="topicsControl.value.includes(topic.name) ? 'primary' : ''"
+            (click)="toggleTopic(i)"
+          >
+            {{ topic.name }}
+          </ion-chip>
+        </div>
+        <div class="error-message" *ngIf="subscribeForm.controls['topics'].touched && subscribeForm.controls['topics'].invalid">
+          <span *ngIf="subscribeForm.controls['topics'].errors?.['required']">At least one topic is required.</span>
+          <span *ngIf="subscribeForm.controls['topics'].errors?.['maxLength']">You can select up to 3 topics only.</span>
+        </div>
+
+        <!-- Submit Button -->
+        <ion-button class="payment-button" expand="block" type="submit" [disabled]="!subscribeForm.valid">
+          Continue to Payment
+        </ion-button>
+      </form>
+    </div>
+    <div class="summary-container">
+      <h3>Summary</h3>
+      <p>of your Monthly Surprise Box</p>
+      <ion-card>
+        <ion-card-content>
+          <div class="summary-item">
+            <span>Mystery Box</span>
+            <span>SAR 456</span>
+          </div>
+        </ion-card-content>
+      </ion-card>
+      <div class="summary-item">
+        <span>Shipping</span>
+        <span>Free</span>
+      </div>
+      <div class="summary-item">
+        <span>Taxes</span>
+        <span>SAR 4.00</span>
+      </div>
+      <hr>
+      <div class="summary-total">
+        <span>Total</span>
+        <span>SAR 456</span>
+      </div>
+    </div>
+  </div>
+</ion-content>

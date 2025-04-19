@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-how-it-works',
@@ -8,10 +8,11 @@ import { IonicModule } from '@ionic/angular';
   standalone: true,
   imports: [IonicModule],
 })
-export class HowItWorksComponent  implements OnInit {
-
-  constructor() { }
+export class HowItWorksComponent implements OnInit {
+  constructor(private navCtrl: NavController) {}
 
   ngOnInit() {}
-
+  goToSubscribePage() {
+    this.navCtrl.navigateForward('/subscribe');
+  }
 }

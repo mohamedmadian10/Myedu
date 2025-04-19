@@ -45,6 +45,7 @@
     width: 220px;
     height: 70px;
   }
-  .m-auto {
-    margin: auto;
+  .custom-bg {
+    --background: #AB95F9; 
+    --color: #ffffff;     
   }
