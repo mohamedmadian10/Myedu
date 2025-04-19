@@ -9,8 +9,8 @@ describe('HowItWorksComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ HowItWorksComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [ ],
+      imports: [HowItWorksComponent, IonicModule.forRoot()]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HowItWorksComponent);
